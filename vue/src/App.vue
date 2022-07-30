@@ -45,7 +45,8 @@ export default {
             alert('calc');
         },
         reset() {
-            alert('reset');
+            this.product_list.splice(0, this.product_list.length);
+            this.user_list.splice(0, this.user_list.length);
         },
         product() {
             alert('product');
