@@ -1,10 +1,17 @@
 <template>
     <div class="container p-0 vh-100">
         <the-header></the-header>
-        <the-add-form @product="product" @user="user"></the-add-form>
+        <the-add-form 
+            @product="product" 
+            @user="user">
+        </the-add-form>
         <div class="content">
             <box>
-                <the-table :user_list="user_list" :product_list="product_list"></the-table>
+                <the-table 
+                    :user_list="user_list" 
+                    :product_list="product_list"
+                    @deleteRow="deleteRow">
+                </the-table>
             </box>
         </div>
         <results @calculate="calculate" @reset="reset"></results>
@@ -57,6 +64,11 @@ export default {
         },
         user() {
             alert('user');
+        },
+        deleteRow(id) {
+            this.product_list.splice(this.product_list.findIndex(function(element) {
+                return element.id === id;
+            }), 1);
         },
     },
 }

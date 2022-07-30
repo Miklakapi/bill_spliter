@@ -9,6 +9,7 @@
                     <th scope="col" v-for="user in user_list" :key="user.id">
                         {{ user.name }}
                     </th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,9 @@
                     <td v-for="user in user_list" :key="user.id">
                         {{ user.name }}
                     </td>
+                    <td>
+                        <div @click="this.$emit('deleteRow', product.id)" style="border: 1px solid white;">X</div>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -27,7 +31,8 @@
 
 <script>
 export default {
-    props: ['product_list', 'user_list'],
+    emits: ['deleteRow'],
+    props: ['product_list', 'user_list', 'deleteRow'],
 }
 </script>
 
