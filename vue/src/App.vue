@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             user_list: [{id: 1, name: 'Kacper', sum: 0}, {id: 2, name: 'Stefan', sum: 0}],
-            product_list: [{id: 1, name: 'milk', price: 2.55}, {id: 2, name: 'bread', price: 1.22}],
+            product_list: [{id: 1, name: 'milk', price: 2.55, numberOfUsers: 0}, {id: 2, name: 'bread', price: 1.22, numberOfUsers: 0}],
             dialogPopup: {
                 status: false,
                 type: '',
@@ -103,7 +103,7 @@ export default {
             if (this.product_list.length) {
                 lastId = this.product_list.at(-1).id;
             }
-            this.product_list.push({id: lastId + 1, name: data.name, price: data.price});
+            this.product_list.push({id: lastId + 1, name: data.name, price: data.price, numberOfUsers: 0});
         },
         addUserForm() {
             this.dialogPopup.head = 'User Form';
