@@ -8,7 +8,7 @@
 .header {
     text-align: center;
     padding: 20px;
-    font-weight: 25px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 3px;
 }
