@@ -135,8 +135,14 @@ export default {
             const productIndex = this.product_list.findIndex(function(element) {
                 return element.id === data.productId;
             });
-            if (checked) this.user_list[userIndex].sum += this.product_list[productIndex].price;
-            else this.user_list[userIndex].sum -= this.product_list[productIndex].price;
+            if (checked) {
+                this.user_list[userIndex].sum += this.product_list[productIndex].price;
+                this.product_list[productIndex].numberOfUsers += 1;
+            }
+            else {
+                this.user_list[userIndex].sum -= this.product_list[productIndex].price;
+                this.product_list[productIndex].numberOfUsers -= 1;
+            }
 
             this.user_list[userIndex].sum = Number(this.user_list[userIndex].sum.toFixed(2));
         }
