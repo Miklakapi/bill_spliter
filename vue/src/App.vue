@@ -10,8 +10,8 @@
         </dialog-popup>
         <the-header></the-header>
         <the-add-form 
-            @product="product" 
-            @user="user">
+            @product="addProductForm" 
+            @user="addUserForm">
         </the-add-form>
         <div class="content">
             <box>
@@ -100,19 +100,29 @@ export default {
             this.product_list.splice(0, this.product_list.length);
             this.user_list.splice(0, this.user_list.length);
         },
-        product(data) {
-            const lastId = this.product_list.at(-1).id;
-            this.product_list.push({id: lastId + 1, name: 'work', price: 15.73});
+        addProductForm() {
             this.dialogPopup.head = 'Product Form';
             this.dialogPopup.type = 'product';
             this.dialogPopup.status = true;
         },
-        user(data) {
-            const lastId = this.user_list.at(-1).id;
-            this.user_list.push({id: lastId + 1, name: 'new user', sum: 0});
+        product(data) {
+            let lastId = 0;
+            if (this.product_list.length) {
+                lastId = this.product_list.at(-1).id;
+            }
+            this.product_list.push({id: lastId + 1, name: data.name, price: data.price});
+        },
+        addUserForm() {
             this.dialogPopup.head = 'User Form';
             this.dialogPopup.type = 'user';
             this.dialogPopup.status = true;
+        },
+        user(data) {
+            let lastId = 0;
+            if (this.user_list.length) {
+                lastId = this.user_list.at(-1).id;
+            }
+            this.user_list.push({id: lastId + 1, name: data.name, sum: 0});
         },
         deleteColumn(id) {
             this.user_list.splice(this.user_list.findIndex(function(element) {
