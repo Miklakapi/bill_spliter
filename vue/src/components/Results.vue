@@ -1,7 +1,6 @@
 <template>
     <section class="footer">
-        <button-element></button-element>
-        123
+        <button-element>Calculate</button-element>
     </section>
 </template>
 
