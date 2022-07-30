@@ -4,8 +4,8 @@
             <template v-slot:head>{{ dialogPopup.head }}</template>
             <template v-slot:default>
                 <results v-if="dialogPopup.type==='result'" :data="dialogPopup.data" :user_list="user_list"></results>
-                <product-form v-else-if="dialogPopup.type==='product'"></product-form>
-                <user-form v-else-if="dialogPopup.type==='user'"></user-form>
+                <product-form v-else-if="dialogPopup.type==='product'" @submit="product"></product-form>
+                <user-form v-else-if="dialogPopup.type==='user'" @submit="user"></user-form>
             </template>
         </dialog-popup>
         <the-header></the-header>
