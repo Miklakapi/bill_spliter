@@ -8,6 +8,7 @@
                     <th scope="col">Price</th>
                     <th scope="col" v-for="user in user_list" :key="user.id">
                         {{ user.name }}
+                        <span @click="this.$emit('deleteColumn', user.id)" style="border: 1px solid white;">X</span>
                     </th>
                     <th scope="col">Delete</th>
                 </tr>

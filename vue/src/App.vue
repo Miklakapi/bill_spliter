@@ -10,6 +10,7 @@
                 <the-table 
                     :user_list="user_list" 
                     :product_list="product_list"
+                    @deleteColumn="deleteColumn"
                     @deleteRow="deleteRow">
                 </the-table>
             </box>
@@ -64,6 +65,11 @@ export default {
         },
         user() {
             alert('user');
+        },
+        deleteColumn(id) {
+            this.user_list.splice(this.user_list.findIndex(function(element) {
+                return element.id === id;
+            }), 1);
         },
         deleteRow(id) {
             this.product_list.splice(this.product_list.findIndex(function(element) {
