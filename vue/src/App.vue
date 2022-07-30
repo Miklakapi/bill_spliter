@@ -2,8 +2,10 @@
     <div class="container p-0 vh-100">
         <the-header></the-header>
         <the-add-form></the-add-form>
-        <div class="content row">
-            <the-table></the-table>
+        <div class="content">
+            <box>
+                <the-table></the-table>
+            </box>
         </div>
     </div>
 </template>
@@ -12,12 +14,14 @@
 import TheHeader from './components/TheHeader.vue';
 import TheAddForm from './components/TheAddForm.vue';
 import TheTable from './components/TheTable.vue';
+import Box from './components/Box.vue';
 
 export default {
     components: {
         TheHeader,
         TheAddForm,
         TheTable,
+        Box,
     }
 }
 </script>
@@ -35,6 +39,8 @@ body {
 }
 
 .content {
-    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
 }
 </style>
