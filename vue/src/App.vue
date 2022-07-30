@@ -1,18 +1,23 @@
 <template>
     <div class="container p-0">
         <the-header></the-header>
+        <the-add-form></the-add-form>
         <div class="content">
-
+            <the-table></the-table>
         </div>
     </div>
 </template>
 
 <script>
 import TheHeader from './components/TheHeader.vue';
+import TheAddForm from './components/TheAddForm.vue';
+import TheTable from './components/TheTable.vue';
 
 export default {
     components: {
         TheHeader,
+        TheAddForm,
+        TheTable,
     }
 }
 </script>
