@@ -7,6 +7,7 @@
                 <the-table></the-table>
             </box>
         </div>
+        <results></results>
     </div>
 </template>
 
@@ -15,6 +16,7 @@ import TheHeader from './components/TheHeader.vue';
 import TheAddForm from './components/TheAddForm.vue';
 import TheTable from './components/TheTable.vue';
 import Box from './components/Box.vue';
+import Results from './components/Results.vue';
 
 export default {
     components: {
@@ -22,6 +24,7 @@ export default {
         TheAddForm,
         TheTable,
         Box,
+        Results,
     }
 }
 </script>
@@ -41,6 +44,7 @@ body {
 .content {
     width: 100%;
     margin: 0;
-    padding: 20px;
+    padding: 0 20px;
+    height: 75%;
 }
 </style>
