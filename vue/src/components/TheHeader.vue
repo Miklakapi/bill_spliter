@@ -6,11 +6,13 @@
 
 <style lang="scss" scoped>
 .header {
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 3px;
-    background-color: #272c30;;
+    background-color: #272c30;
+    height: 7%;
 }
 </style>
