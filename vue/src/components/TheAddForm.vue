@@ -1,10 +1,10 @@
 <template>
     <div class="button-container row text-center">
         <div class="col-6">
-            <add-button>Add product</add-button>
+            <button-element>Add product</button-element>
         </div>
         <div class="col-6 text-center">
-            <add-button>Add user</add-button>
+            <button-element>Add user</button-element>
         </div>
     </div>
 </template>

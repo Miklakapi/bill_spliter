@@ -1,5 +1,6 @@
 <template>
     <section class="footer">
+        <button-element></button-element>
         123
     </section>
 </template>
