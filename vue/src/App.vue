@@ -3,7 +3,9 @@
         <dialog-popup v-if="dialogPopup.status" @close="dialogPopup.status=false">
             <template v-slot:head>{{ dialogPopup.head }}</template>
             <template v-slot:default>
-                <results :data="dialogPopup.data" :user_list="user_list"></results>
+                <results v-if="dialogPopup.type==='result'" :data="dialogPopup.data" :user_list="user_list"></results>
+                <product-form v-else-if="dialogPopup.type==='product'"></product-form>
+                <user-form v-else-if="dialogPopup.type==='user'"></user-form>
             </template>
         </dialog-popup>
         <the-header></the-header>
@@ -33,6 +35,8 @@ import Box from './components/Box.vue';
 import DialogPopup from './components/DialogPopup.vue';
 import TheFooter from './components/TheFooter.vue';
 import Results from './components/Results.vue';
+import ProductForm from './components/ProductForm.vue';
+import UserForm from './components/UserForm.vue';
 
 export default {
     data() {
@@ -49,6 +53,7 @@ export default {
             ],
             dialogPopup: {
                 status: false,
+                type: '',
                 head: '',
                 data: null,
             },
@@ -62,6 +67,8 @@ export default {
         TheFooter,
         DialogPopup,
         Results,
+        ProductForm,
+        UserForm,
     },
     methods: {
         calculate() {
@@ -80,6 +87,7 @@ export default {
             });
 
             this.dialogPopup.head = 'Results';
+            this.dialogPopup.type = 'result';
             this.dialogPopup.data = { 
                 billSum: billSum.toFixed(2), 
                 numberOfProducts: numberOfProducts, 
@@ -95,10 +103,16 @@ export default {
         product(data) {
             const lastId = this.product_list.at(-1).id;
             this.product_list.push({id: lastId + 1, name: 'work', price: 15.73});
+            this.dialogPopup.head = 'Product Form';
+            this.dialogPopup.type = 'product';
+            this.dialogPopup.status = true;
         },
         user(data) {
             const lastId = this.user_list.at(-1).id;
             this.user_list.push({id: lastId + 1, name: 'new user', sum: 0});
+            this.dialogPopup.head = 'User Form';
+            this.dialogPopup.type = 'user';
+            this.dialogPopup.status = true;
         },
         deleteColumn(id) {
             this.user_list.splice(this.user_list.findIndex(function(element) {
