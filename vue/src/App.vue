@@ -42,7 +42,11 @@ export default {
     },
     methods: {
         calculate() {
-            alert('calc');
+            let sum = 0;
+            this.product_list.forEach(element => {
+                sum += element.price;
+            });
+            alert(sum.toFixed(2));
         },
         reset() {
             this.product_list.splice(0, this.product_list.length);
