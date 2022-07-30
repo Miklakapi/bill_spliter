@@ -30,9 +30,9 @@ export default {
     data() {
         return {
             user_list: [
-                {id: 1, name: 'user1'},
-                {id: 2, name: 'user2'},
-                {id: 3, name: 'user3'},
+                {id: 1, name: 'user1', sum: 0},
+                {id: 2, name: 'user2', sum: 0},
+                {id: 3, name: 'user3', sum: 0},
                 ],
             product_list: [
                 {id: 1, name: 'milk', price: 2.45},
@@ -60,11 +60,13 @@ export default {
             this.product_list.splice(0, this.product_list.length);
             this.user_list.splice(0, this.user_list.length);
         },
-        product() {
-            alert('product');
+        product(data) {
+            const lastId = this.product_list.at(-1).id;
+            this.product_list.push({id: lastId + 1, name: 'work', price: 15.73});
         },
-        user() {
-            alert('user');
+        user(data) {
+            const lastId = this.user_list.at(-1).id;
+            this.user_list.push({id: lastId + 1, name: 'new user'});
         },
         deleteColumn(id) {
             this.user_list.splice(this.user_list.findIndex(function(element) {
