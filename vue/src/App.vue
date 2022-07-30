@@ -42,16 +42,8 @@ import UserForm from './components/UserForm.vue';
 export default {
     data() {
         return {
-            user_list: [
-                {id: 1, name: 'user1', sum: 1},
-                {id: 2, name: 'user2', sum: 2},
-                {id: 3, name: 'user3', sum: 3},
-                ],
-            product_list: [
-                {id: 1, name: 'milk', price: 2.45},
-                {id: 2, name: 'pizza', price: 10.12},
-                {id: 3, name: 'water', price: 1.28},
-            ],
+            user_list: [{id: 1, name: 'Kacper', sum: 0}, {id: 2, name: 'Stefan', sum: 0}],
+            product_list: [{id: 1, name: 'milk', price: 2.55}, {id: 2, name: 'bread', price: 1.22}],
             dialogPopup: {
                 status: false,
                 type: '',
@@ -145,6 +137,8 @@ export default {
             });
             if (checked) this.user_list[userIndex].sum += this.product_list[productIndex].price;
             else this.user_list[userIndex].sum -= this.product_list[productIndex].price;
+
+            this.user_list[userIndex].sum = Number(this.user_list[userIndex].sum.toFixed(2));
         }
     },
 }
