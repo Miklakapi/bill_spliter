@@ -21,7 +21,7 @@
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
                     <td v-for="user in user_list" :key="user.id">
-                        {{ user.name }}
+                        <input type="checkbox" class="form-check-input" @click="this.$emit('userChange', {productId: product.id, userId: user.id})">
                     </td>
                     <td>
                         <div @click="this.$emit('deleteRow', product.id)" class="text-center">
@@ -41,7 +41,7 @@ export default {
     components: {
         'xIcon': BIconX,
     },
-    emits: ['deleteRow'],
+    emits: ['deleteRow', 'userChange'],
     props: ['product_list', 'user_list', 'deleteRow'],
 }
 </script>
