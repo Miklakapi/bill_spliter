@@ -7,7 +7,7 @@
                 <the-table></the-table>
             </box>
         </div>
-        <results @calculate="calculate"></results>
+        <results @calculate="calculate" @reset="reset"></results>
     </div>
 </template>
 
