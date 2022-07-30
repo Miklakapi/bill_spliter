@@ -1,8 +1,8 @@
 <template>
-    <div class="container p-0">
+    <div class="container p-0 vh-100">
         <the-header></the-header>
         <the-add-form></the-add-form>
-        <div class="content">
+        <div class="content row">
             <the-table></the-table>
         </div>
     </div>
