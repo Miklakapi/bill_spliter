@@ -15,7 +15,7 @@
                 </the-table>
             </box>
         </div>
-        <footer @calculate="calculate" @reset="reset"></footer>
+        <the-footer @calculate="calculate" @reset="reset"></the-footer>
     </div>
 </template>
 
@@ -24,7 +24,7 @@ import TheHeader from './components/TheHeader.vue';
 import TheAddForm from './components/TheAddForm.vue';
 import TheTable from './components/TheTable.vue';
 import Box from './components/Box.vue';
-import Footer from './components/Footer.vue';
+import TheFooter from './components/TheFooter.vue';
 
 export default {
     data() {
