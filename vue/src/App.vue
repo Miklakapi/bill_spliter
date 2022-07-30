@@ -1,7 +1,7 @@
 <template>
     <div class="container p-0 vh-100">
         <the-header></the-header>
-        <the-add-form></the-add-form>
+        <the-add-form @product="product" @user="user"></the-add-form>
         <div class="content">
             <box>
                 <the-table></the-table>
@@ -32,7 +32,13 @@ export default {
         },
         reset() {
             alert('reset');
-        }
+        },
+        product() {
+            alert('product');
+        },
+        user() {
+            alert('user');
+        },
     }
 }
 </script>

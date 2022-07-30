@@ -1,13 +1,19 @@
 <template>
     <div class="button-container row text-center">
         <div class="col-6">
-            <button-element>Add product</button-element>
+            <button-element @click="this.$emit('product')">Add product</button-element>
         </div>
         <div class="col-6 text-center">
-            <button-element>Add user</button-element>
+            <button-element @click="this.$emit('user')">Add user</button-element>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    emits: ['product', 'user'],
+}
+</script>
 
 <style lang="scss" scoped>
 .button-container {
