@@ -8,13 +8,3 @@
         </div>
     </div>
 </template>
-
-<script>
-import AddButton from './AddButton.vue';
-
-export default {
-    components: {
-        AddButton,
-    }
-}
-</script>
