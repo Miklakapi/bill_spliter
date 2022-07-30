@@ -9,5 +9,7 @@ section {
     background-color: #272c30;
     border-radius: 10px;
     padding: 15px;
+    overflow: auto;
+    max-height: 100%;
 }
 </style>

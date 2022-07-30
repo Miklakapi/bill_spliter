@@ -44,7 +44,7 @@ body {
 .content {
     width: 100%;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 20px 25px 20px;
     height: 75%;
 }
 </style>
