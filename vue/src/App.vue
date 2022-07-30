@@ -7,7 +7,7 @@
                 <the-table></the-table>
             </box>
         </div>
-        <results></results>
+        <results @calculate="calculate"></results>
     </div>
 </template>
 
@@ -25,6 +25,14 @@ export default {
         TheTable,
         Box,
         Results,
+    },
+    methods: {
+        calculate() {
+            alert('calc');
+        },
+        reset() {
+            alert('reset');
+        }
     }
 }
 </script>

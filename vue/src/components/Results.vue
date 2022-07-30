@@ -1,8 +1,15 @@
 <template>
     <section class="footer">
-        <button-element>Calculate</button-element>
+        <div class="me-3"><button-element @click="this.$emit('reset')">Reset</button-element></div>
+        <div class="ms-3"><button-element @click="this.$emit('calculate')">Calculate</button-element></div>
     </section>
 </template>
+
+<script>
+export default {
+    emits: ['calculate', 'reset'],
+}
+</script>
 
 <style lang="scss" scoped>
 .footer {
