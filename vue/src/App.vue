@@ -19,7 +19,8 @@
                     :user_list="user_list" 
                     :product_list="product_list"
                     @deleteColumn="deleteColumn"
-                    @deleteRow="deleteRow">
+                    @deleteRow="deleteRow"
+                    @userChange="userChange">
                 </the-table>
             </box>
         </div>
@@ -134,6 +135,17 @@ export default {
                 return element.id === id;
             }), 1);
         },
+        userChange(data) {
+            const checked = data.event.target.checked;
+            const userIndex = this.user_list.findIndex(function(element) {
+                return element.id === data.userId;
+            });
+            const productIndex = this.product_list.findIndex(function(element) {
+                return element.id === data.productId;
+            });
+            if (checked) this.user_list[userIndex].sum += this.product_list[productIndex].price;
+            else this.user_list[userIndex].sum -= this.product_list[productIndex].price;
+        }
     },
 }
 </script>

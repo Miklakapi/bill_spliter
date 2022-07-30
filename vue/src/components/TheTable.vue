@@ -21,7 +21,7 @@
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
                     <td v-for="user in user_list" :key="user.id">
-                        <input type="checkbox" class="form-check-input" @click="this.$emit('userChange', {productId: product.id, userId: user.id})">
+                        <input type="checkbox" class="form-check-input" @click="this.$emit('userChange', {productId: product.id, userId: user.id, event: $event})">
                     </td>
                     <td>
                         <div @click="this.$emit('deleteRow', product.id)" class="text-center">
