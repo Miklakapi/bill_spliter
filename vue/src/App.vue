@@ -51,8 +51,10 @@ export default {
     methods: {
         calculate() {
             let sum = 0;
+            let numberOfProduct = 0;
             this.product_list.forEach(element => {
                 sum += element.price;
+                numberOfProduct++;
             });
             alert(sum.toFixed(2));
         },

@@ -8,9 +8,11 @@
                     <th scope="col">Price</th>
                     <th scope="col" v-for="user in user_list" :key="user.id">
                         {{ user.name }}
-                        <span @click="this.$emit('deleteColumn', user.id)" style="border: 1px solid white;">X</span>
+                        <span @click="this.$emit('deleteColumn', user.id)">
+                            <x-icon class="x-icon x-icon-smaller"></x-icon>
+                        </span>
                     </th>
-                    <th scope="col">Delete</th>
+                    <th scope="col" class="text-center">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +24,9 @@
                         {{ user.name }}
                     </td>
                     <td>
-                        <div @click="this.$emit('deleteRow', product.id)" style="border: 1px solid white;">X</div>
+                        <div @click="this.$emit('deleteRow', product.id)" class="text-center">
+                            <x-icon class="x-icon"></x-icon>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -31,7 +35,12 @@
 </template>
 
 <script>
+import { BIconX } from 'bootstrap-icons-vue';
+
 export default {
+    components: {
+        'xIcon': BIconX,
+    },
     emits: ['deleteRow'],
     props: ['product_list', 'user_list', 'deleteRow'],
 }
@@ -44,6 +53,20 @@ table {
 
     tr:nth-child(even) {
         background-color: lighten(#272c30, 5%);
+    }
+
+    .x-icon {
+        background: rgb(238, 43, 43);
+        color: white;
+        font-size: 20px;
+
+        &:hover {
+            background: darken(rgb(238, 43, 43), 10%);
+        }
+    }
+
+    .x-icon-smaller {
+        font-size: 17px !important;
     }
 }
 </style>
