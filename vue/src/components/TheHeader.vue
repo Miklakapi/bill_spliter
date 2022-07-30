@@ -11,5 +11,6 @@
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 3px;
+    background-color: #272c30;;
 }
 </style>
