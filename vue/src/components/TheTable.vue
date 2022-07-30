@@ -3,26 +3,22 @@
         <table class="table nowrap m-0">
             <thead>
                 <tr>
+                    <th scope="col">Id</th>
                     <th scope="col">Product</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Users</th>
+                    <th scope="col" v-for="user in user_list" :key="user.id">
+                        {{ user.name }}
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>2</td>
-                    <td>3</td>
+                <tr v-for="product in product_list" :key="product.id">
+                    <th scope="row">{{ product.id }}</th>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td v-for="user in user_list" :key="user.id">
+                        {{ user.name }}
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -30,7 +26,9 @@
 </template>
 
 <script>
-
+export default {
+    props: ['product_list', 'user_list'],
+}
 </script>
 
 <style lang="scss" scoped>

@@ -4,7 +4,7 @@
         <the-add-form @product="product" @user="user"></the-add-form>
         <div class="content">
             <box>
-                <the-table></the-table>
+                <the-table :user_list="user_list" :product_list="product_list"></the-table>
             </box>
         </div>
         <results @calculate="calculate" @reset="reset"></results>
@@ -19,6 +19,20 @@ import Box from './components/Box.vue';
 import Results from './components/Results.vue';
 
 export default {
+    data() {
+        return {
+            user_list: [
+                {id: 1, name: 'user1'},
+                {id: 2, name: 'user2'},
+                {id: 3, name: 'user3'},
+                ],
+            product_list: [
+                {id: 1, name: 'milk', price: 2.45},
+                {id: 2, name: 'pizza', price: 10.12},
+                {id: 3, name: 'water', price: 1.28},
+            ],
+        };
+    },
     components: {
         TheHeader,
         TheAddForm,
@@ -39,7 +53,7 @@ export default {
         user() {
             alert('user');
         },
-    }
+    },
 }
 </script>
 
