@@ -27,16 +27,18 @@ export default {
     methods: {
         submit() {
             if (this.validateForm()) {
+                this.form.invalidName = false;
                 this.$emit('submit', this.user);
-            } else {
-                this.form.invalidName = true;
             }
             this.user.name = '';
         },
         validateForm() {
-            if (this.user.name === '') return false;
+            if (this.user.name === '') {
+                this.form.invalidName = true;
+                return false;
+            }
             return true;
-        }
+        },
     }
 }
 </script>
