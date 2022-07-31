@@ -21,7 +21,7 @@ The program is based on the Vue framework. It allows the user to easily split th
 New data can be added with the buttons at the top of the screen. Select products assigned to a given person using checkboxes and display a summary of expenses per person.
 
 <p align="center" width="100%">
-    <img width="75%" src="https://github.com/Miklakapi/bill_splitter/blob/master/README_IMAGES/Dashboard..png"> 
+    <img width="75%" src="https://github.com/Miklakapi/bill_splitter/blob/master/README_IMAGES/App.png"> 
 </p>
 
 ## Technologies
