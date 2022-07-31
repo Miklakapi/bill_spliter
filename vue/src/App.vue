@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             user_list: [{id: 1, name: 'Kacper', sum: 0}, {id: 2, name: 'Stefan', sum: 0}],
-            product_list: [{id: 1, name: 'milk', price: 2.55, numberOfUsers: 0}, {id: 2, name: 'bread', price: 1.22, numberOfUsers: 0}],
+            product_list: [{id: 1, name: 'milk', price: 2.55, users: []}, {id: 2, name: 'bread', price: 1.22, users: []}],
             dialogPopup: {
                 status: false,
                 type: '',
@@ -67,9 +67,20 @@ export default {
         calculate() {
             let billSum = 0;
             let numberOfProducts = 0;
-            this.product_list.forEach(element => {
-                billSum += element.price;
+
+            this.user_list.forEach(user => {
+                user.sum = 0;
+            });
+            this.product_list.forEach(product => {
+                billSum += product.price;
                 numberOfProducts++;
+
+                const pricePerPerson = product.price / (product.users.length ?? 1);
+                product.users.forEach(userId => {
+                    this.user_list[this.user_list.findIndex(function(user) {
+                        return user.id === userId;
+                    })].sum += pricePerPerson;
+                });
             });
 
             let userSum = 0;
@@ -103,7 +114,7 @@ export default {
             if (this.product_list.length) {
                 lastId = this.product_list.at(-1).id;
             }
-            this.product_list.push({id: lastId + 1, name: data.name, price: data.price, numberOfUsers: 0});
+            this.product_list.push({id: lastId + 1, name: data.name, price: data.price, users: []});
         },
         addUserForm() {
             this.dialogPopup.head = 'User Form';
@@ -129,24 +140,19 @@ export default {
         },
         userChange(data) {
             const checked = data.event.target.checked;
-            const userIndex = this.user_list.findIndex(function(element) {
-                return element.id === data.userId;
-            });
             const productIndex = this.product_list.findIndex(function(element) {
                 return element.id === data.productId;
             });
+
             if (checked) {
-                this.product_list[productIndex].numberOfUsers += 1;
-                const splitPrice = Number(this.product_list[productIndex].price / this.product_list[productIndex].numberOfUsers).toFixed(2);
-                this.user_list[userIndex].sum += Number(splitPrice);
+                this.product_list[productIndex].users.push(data.userId);
             }
             else {
-                const splitPrice = Number(this.product_list[productIndex].price / this.product_list[productIndex].numberOfUsers).toFixed(2);
-                this.product_list[productIndex].numberOfUsers -= 1;
-                this.user_list[userIndex].sum -= Number(splitPrice);
+                this.product_list[productIndex].users.splice(this.product_list[productIndex].users.findIndex(function(element) {
+                    return element === data.userId;
+                }), 1);
             }
-
-            this.user_list[userIndex].sum = Number(this.user_list[userIndex].sum.toFixed(2));
+            console.log(this.product_list);
         }
     },
 }
