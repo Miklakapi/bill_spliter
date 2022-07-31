@@ -3,6 +3,9 @@
         <div class="input-group mb-3">
             <span class="input-group-text">Name</span>
             <input type="text" class="form-control" v-model.trim="user.name">
+            <span class="invalid" v-if="form.invalidName">
+                Invalid user name.
+            </span>
         </div>
         <button type="button" @click="submit" class="btn btn-success">Submit</button>
     </form>
@@ -15,14 +18,39 @@ export default {
         return {
             user: {
                 name: '',
-            }
+            },
+            form: {
+                invalidName: false,
+            },
         };
     },
     methods: {
         submit() {
-            this.$emit('submit', this.user);
+            if (this.validateForm()) {
+                this.$emit('submit', this.user);
+            } else {
+                this.form.invalidName = true;
+            }
             this.user.name = '';
+        },
+        validateForm() {
+            if (this.user.name === '') return false;
+            return true;
         }
     }
 }
 </script>
+
+<style>
+.input-group-text {
+    width: 90px;
+}
+
+.invalid {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+    font-weight: bold;
+}
+</style>
