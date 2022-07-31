@@ -136,12 +136,14 @@ export default {
                 return element.id === data.productId;
             });
             if (checked) {
-                this.user_list[userIndex].sum += this.product_list[productIndex].price;
                 this.product_list[productIndex].numberOfUsers += 1;
+                const splitPrice = Number(this.product_list[productIndex].price / this.product_list[productIndex].numberOfUsers).toFixed(2);
+                this.user_list[userIndex].sum += Number(splitPrice);
             }
             else {
-                this.user_list[userIndex].sum -= this.product_list[productIndex].price;
+                const splitPrice = Number(this.product_list[productIndex].price / this.product_list[productIndex].numberOfUsers).toFixed(2);
                 this.product_list[productIndex].numberOfUsers -= 1;
+                this.user_list[userIndex].sum -= Number(splitPrice);
             }
 
             this.user_list[userIndex].sum = Number(this.user_list[userIndex].sum.toFixed(2));
