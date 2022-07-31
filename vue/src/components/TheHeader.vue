@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        Bill Spliter
+        Bill Splitter
     </div>
 </template>
 
