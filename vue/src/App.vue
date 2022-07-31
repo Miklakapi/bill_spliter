@@ -77,7 +77,7 @@ export default {
 
                 const pricePerPerson = product.price / (product.users.length ?? 1);
                 product.users.forEach(userId => {
-                    this.user_list[this.user_list.findIndex(function(user) {
+                    this.user_list[this.user_list.findIndex(function (user) {
                         return user.id === userId;
                     })].sum += pricePerPerson;
                 });
@@ -85,8 +85,9 @@ export default {
 
             let userSum = 0;
             let numberOfUsers = 0;
-            this.user_list.forEach(element => {
-                userSum += element.sum;
+            this.user_list.forEach(user => {
+                userSum += user.sum;
+                user.sum = user.sum.toFixed(2);
                 numberOfUsers++;
             });
 
@@ -129,18 +130,23 @@ export default {
             this.user_list.push({id: lastId + 1, name: data.name, sum: 0});
         },
         deleteColumn(id) {
-            this.user_list.splice(this.user_list.findIndex(function(element) {
+            this.user_list.splice(this.user_list.findIndex(function (element) {
                 return element.id === id;
             }), 1);
+            this.product_list.forEach(product => {
+                product.users.splice(product.users.findIndex(function (user) {
+                    return user == id;
+                }), 1);
+            });
         },
         deleteRow(id) {
-            this.product_list.splice(this.product_list.findIndex(function(element) {
+            this.product_list.splice(this.product_list.findIndex(function (element) {
                 return element.id === id;
             }), 1);
         },
         userChange(data) {
             const checked = data.event.target.checked;
-            const productIndex = this.product_list.findIndex(function(element) {
+            const productIndex = this.product_list.findIndex(function (element) {
                 return element.id === data.productId;
             });
 
@@ -148,11 +154,10 @@ export default {
                 this.product_list[productIndex].users.push(data.userId);
             }
             else {
-                this.product_list[productIndex].users.splice(this.product_list[productIndex].users.findIndex(function(element) {
+                this.product_list[productIndex].users.splice(this.product_list[productIndex].users.findIndex(function (element) {
                     return element === data.userId;
                 }), 1);
             }
-            console.log(this.product_list);
         }
     },
 }
@@ -163,17 +168,17 @@ body {
     background-image: url("./black-1920.jpg");
     margin: 0;
     color: #bec5cb;
-}
 
-.container {
-    background-color: #353c42;
-    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-}
+    .container {
+        background-color: #353c42;
+        box-shadow: 0 0 10px rgb(0 0 0 / 50%);
 
-.content {
-    width: 100%;
-    margin: 0;
-    padding: 0 20px 25px 20px;
-    height: 75%;
+        .content {
+            width: 100%;
+            margin: 0;
+            padding: 0 20px 25px 20px;
+            height: 75%;
+        }
+    }
 }
 </style>
