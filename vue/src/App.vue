@@ -42,8 +42,8 @@ import UserForm from './components/UserForm.vue';
 export default {
     data() {
         return {
-            user_list: [{id: 1, name: 'Kacper', sum: 0}, {id: 2, name: 'Stefan', sum: 0}],
-            product_list: [{id: 1, name: 'milk', price: 2.55, users: []}, {id: 2, name: 'bread', price: 1.22, users: []}],
+            user_list: [],
+            product_list: [],
             dialogPopup: {
                 status: false,
                 type: '',
