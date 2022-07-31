@@ -41,7 +41,7 @@ export default {
     components: {
         'xIcon': BIconX,
     },
-    emits: ['deleteRow', 'userChange'],
+    emits: ['deleteRow', 'deleteColumn', 'userChange'],
     props: ['product_list', 'user_list', 'deleteRow'],
 }
 </script>
