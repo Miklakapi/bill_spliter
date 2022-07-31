@@ -6,7 +6,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Product</th>
                     <th scope="col">Price</th>
-                    <th scope="col" v-for="user in user_list" :key="user.id">
+                    <th scope="col" class="text-center" v-for="user in user_list" :key="user.id">
                         {{ user.name }}
                         <span @click="this.$emit('deleteColumn', user.id)">
                             <x-icon class="x-icon x-icon-smaller"></x-icon>
@@ -20,7 +20,7 @@
                     <th scope="row">{{ product.id }}</th>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
-                    <td v-for="user in user_list" :key="user.id">
+                    <td class="text-center" v-for="user in user_list" :key="user.id">
                         <input type="checkbox" class="form-check-input" @click="this.$emit('userChange', {productId: product.id, userId: user.id, event: $event})">
                     </td>
                     <td>
